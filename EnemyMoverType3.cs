@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMoverType3 : EnemyMover
+public class EnemyMoverType3 : EnemyMover, IMovableInDiraction
 {
-
+    public override void MoveInDirection(Vector3 targetPosition)
+    {
+        base.MoveInDirection(_direction);
+    }
 }
