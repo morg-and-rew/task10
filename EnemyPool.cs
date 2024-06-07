@@ -32,13 +32,7 @@ public class EnemyPool : MonoBehaviour
     {
         result1 = _pool1.FirstOrDefault(p => p.gameObject.activeSelf == false);
 
-        if (result1 == null)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return result1 != null;
     }
+
 }

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TargetPointMover : MonoBehaviour
 {
-    public Transform point1;
-    public Transform point2;
-    public Transform point3;
+    [SerializeField] private Transform point1;
+    [SerializeField] private Transform point2;
+    [SerializeField] private Transform point3;
 
     private int currentPointIndex = 0;
 

@@ -11,10 +11,13 @@ public class SpawnerEnemy : EnemyPool
     [SerializeField] private float _timeBetweenSpawn = 2f;
     [SerializeField] private float _deactivateTime = 10f;
 
+    private WaitForSeconds _waitBetweenSpawn;
+
     private void Start()
     {
         Create(_enemyPrefabs);
-        
+
+        _waitBetweenSpawn = new WaitForSeconds(_timeBetweenSpawn);
         StartCoroutine(SpawnEnemiesRepeatedly());
     }
 
@@ -34,19 +37,17 @@ public class SpawnerEnemy : EnemyPool
     {
         while (true)
         {
-            yield return new WaitForSeconds(_timeBetweenSpawn);
-
-            EnemyMover enemyPrefab = _enemyPrefabs;
+            yield return _waitBetweenSpawn;
 
             if (TryGetObject(out EnemyMover enemy))
             {
                 Transform spawnPoint = _spawnPoints;
-                SetEnemy(enemy, spawnPoint, enemyPrefab);
+                SetEnemy(enemy, spawnPoint);
             }
         }
     }
 
-    private void SetEnemy(EnemyMover enemy, Transform spawnPoint, EnemyMover enemyPrefab)
+    private void SetEnemy(EnemyMover enemy, Transform spawnPoint)
     {
         enemy.transform.position = spawnPoint.position;
         enemy.gameObject.SetActive(true);
