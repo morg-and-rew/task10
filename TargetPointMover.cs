@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class TargetPointMover : MonoBehaviour
 {
-    [SerializeField] private Transform point1;
-    [SerializeField] private Transform point2;
-    [SerializeField] private Transform point3;
+    [SerializeField] private Transform _point1;
+    [SerializeField] private Transform _point2;
+    [SerializeField] private Transform _point3;
 
     private int currentPointIndex = 0;
 
     private void Start()
     {
-        transform.position = point1.position;
+        transform.position = _point1.position;
     }
 
     private void Update()
@@ -35,13 +35,13 @@ public class TargetPointMover : MonoBehaviour
         switch (currentPointIndex)
         {
             case 0:
-                return point1;
+                return _point1;
             case 1:
-                return point2;
+                return _point2;
             case 2:
-                return point3;
+                return _point3;
             default:
-                return point1;
+                return _point1;
         }
     }
 }
